@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: database:3306
--- Generation Time: Feb 11, 2021 at 02:20 AM
+-- Generation Time: Feb 15, 2021 at 12:50 AM
 -- Server version: 8.0.23
 -- PHP Version: 7.4.15
 
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `moad`
 --
-CREATE DATABASE IF NOT EXISTS `moad` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS `moad` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 USE `moad`;
 
 -- --------------------------------------------------------
@@ -86,6 +86,20 @@ CREATE TABLE `servers` (
   `LastUpdated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `settings`
+--
+
+DROP TABLE IF EXISTS `settings`;
+CREATE TABLE `settings` (
+  `Category` varchar(100) NOT NULL,
+  `PropertyName` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `PropertyValue` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 --
 -- Indexes for dumped tables
 --
@@ -138,4 +152,10 @@ ALTER TABLE `servers`
   ADD KEY `Status` (`Status`),
   ADD KEY `Disposition` (`Disposition`),
   ADD KEY `LastUpdated` (`LastUpdated`);
+
+--
+-- Indexes for table `settings`
+--
+ALTER TABLE `settings`
+  ADD PRIMARY KEY (`Category`,`PropertyName`);
 COMMIT;

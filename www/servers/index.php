@@ -12,7 +12,7 @@
   include ROOT_PATH . 'includes/meta.inc.php';
 
   // PAGE TITLE HERE
-  echo "<title>MOAD</title>";
+  echo "<title>MOAD - Servers</title>";
 
 	// STYLESHEETS
   echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/style.css\">";
@@ -28,8 +28,8 @@
 	    <!-- Post -->
 			<article class="box post post-excerpt">
 				<header>
-					<h2>Welcome to MOAD</h2>
-					<p>A free server inventory</p>
+					<h2>Servers</h2>
+					<p>Managed Systems</p>
 				</header>
 				<div class="info">
 <?php
@@ -48,10 +48,12 @@
 						<li><a href="#" class="fas fa-server">32</a></li>
 						<li><a href="#" class="fas fa-exclamation-triangle">64</a></li>
 					</ul>
-				</div>
-				
+				</div>				
 				<p>
-					<strong>Hello!</strong> Testing responsive web interface.
+					<ul>
+						<li>Add Servers</li>
+					</ul>
+
 				</p>
 		
 			</article>
@@ -59,8 +61,8 @@
 	</div>
 
 <?php
-  $menu_selection = "home";
-	include ROOT_PATH . 'includes/sidebar.inc.php';
+  $menu_selection = "servers";
+	include  ROOT_PATH . 'includes/sidebar.inc.php';
 	
 echo "</body>";
 echo "</html>";

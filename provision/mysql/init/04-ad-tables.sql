@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: database:3306
--- Generation Time: Feb 16, 2021 at 01:28 AM
+-- Generation Time: Feb 16, 2021 at 01:41 AM
 -- Server version: 8.0.23
 -- PHP Version: 7.4.15
 
@@ -37,6 +37,25 @@ CREATE TABLE `computers` (
   `PasswordLastSet` datetime NOT NULL,
   `WhenCreated` datetime NOT NULL,
   `WhenChanged` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `dn` varchar(250) NOT NULL,
+  `cn` varchar(200) NOT NULL,
+  `Enabled` varchar(10) NOT NULL,
+  `GivenName` varchar(100) NOT NULL,
+  `Surname` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `DisplayName` varchar(200) NOT NULL,
+  `SID` varchar(50) NOT NULL,
+  `Domain` varchar(100) NOT NULL,
+  `UserPrincipalName` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

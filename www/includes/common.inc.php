@@ -24,12 +24,13 @@
     );
   }
 
+
   /**
    * Defining path to db libraries
    */
+  define('INCLUDES_PATH', ROOT_PATH . 'includes' . DIRECTORY_SEPARATOR );
   define('DB_LIB_PATH', ROOT_PATH . 'db' . DIRECTORY_SEPARATOR );
   
   include (DB_LIB_PATH . "moad.inc.php")
-
 
 ?>

@@ -30,7 +30,7 @@ services:
     volumes: 
       - ${MYSQL_DATA_DIR-./data/mysql}:/var/lib/mysql
       - ${MYSQL_LOG_DIR-./logs/mysql}:/var/log/mysql
-      - ./provision/mysql/init/01-databases.sql:/docker-entrypoint-initdb.d/mysqldumpfile.sql
+      - ${MYSQL_DB_INIT-./provision/mysql/init/01-databases.sql}:/docker-entrypoint-initdb.d/mysqldumpfile.sql
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}

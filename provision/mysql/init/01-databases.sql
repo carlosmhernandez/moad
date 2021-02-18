@@ -10,7 +10,7 @@ CREATE USER 'moad'@'localhost' IDENTIFIED BY '';
 -- https://www.phpmyadmin.net/
 --
 -- Host: database:3306
--- Generation Time: Feb 15, 2021 at 12:50 AM
+-- Generation Time: Feb 18, 2021 at 01:50 AM
 -- Server version: 8.0.23
 -- PHP Version: 7.4.15
 
@@ -73,6 +73,7 @@ CREATE TABLE `servers` (
   `Server_Type` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `Description` varchar(200) DEFAULT NULL,
   `Disposition` varchar(30) DEFAULT NULL,
+  `Environment` varchar(50) NOT NULL,
   `Status` varchar(10) NOT NULL,
   `LOC_ID` varchar(20) DEFAULT NULL,
   `DataCenter_ID` varchar(50) DEFAULT NULL,
@@ -158,7 +159,8 @@ ALTER TABLE `servers`
   ADD KEY `DataCenter_ID` (`DataCenter_ID`),
   ADD KEY `Status` (`Status`),
   ADD KEY `Disposition` (`Disposition`),
-  ADD KEY `LastUpdated` (`LastUpdated`);
+  ADD KEY `LastUpdated` (`LastUpdated`),
+  ADD KEY `Environment` (`Environment`);
 
 --
 -- Indexes for table `settings`

@@ -10,7 +10,7 @@ CREATE USER 'moad'@'localhost' IDENTIFIED BY '';
 -- https://www.phpmyadmin.net/
 --
 -- Host: database:3306
--- Generation Time: Feb 18, 2021 at 01:50 AM
+-- Generation Time: Feb 19, 2021 at 02:45 AM
 -- Server version: 8.0.23
 -- PHP Version: 7.4.15
 
@@ -167,7 +167,18 @@ ALTER TABLE `servers`
 --
 ALTER TABLE `settings`
   ADD PRIMARY KEY (`Category`,`PropertyName`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `servers`
+--
+ALTER TABLE `servers`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 COMMIT;
+
 
 
 

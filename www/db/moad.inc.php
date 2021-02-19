@@ -163,7 +163,7 @@
     {
       if ($this->show_errors)
       {
-        exit($error);
+        echo ($error);
       }
     }
 

@@ -159,6 +159,43 @@ input, select, textarea {
 		margin-bottom: 1em;
 	}
 
+
+
+	.form-group label {
+		display: block;
+		margin-bottom: 10px;
+		font-size: 20px;
+	}
+
+	.form-group input {
+		padding: 10px;
+		font-size: 15px;
+		margin-bottom: 10px;
+	}
+
+	.form-group select {
+		padding: 10px;
+		font-size: 15px;
+		margin-bottom: 10px;
+	}
+
+	.form-group select {
+		padding: 10px;
+		font-size: 15px;
+		margin-bottom: 10px;
+
+	}
+
+
+
+
+
+
+
+
+
+
+
 /* Row */
 
 	.row {
@@ -1773,7 +1810,7 @@ input, select, textarea {
 	button,
 	.button {
 		cursor: pointer;
-		background-color: #c94663;
+		background-color: #2779e6;
 		border-radius: 0.4em;
 		text-align: center;
 		box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.15);
@@ -1784,7 +1821,7 @@ input, select, textarea {
 		-moz-transition: background-color .25s ease-in-out, color .25s ease-in-out;
 		-webkit-transition: background-color .25s ease-in-out, color .25s ease-in-out;
 		-ms-transition: background-color .25s ease-in-out, color .25s ease-in-out;
-		transition: background-color .25s ease-in-out, color .25s ease-in-out;
+		transition: all .25s ease-in-out, color .25s ease-in-out;
 		text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.5);
 	}
 

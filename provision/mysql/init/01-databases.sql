@@ -10,7 +10,7 @@ CREATE USER 'moad'@'localhost' IDENTIFIED BY '';
 -- https://www.phpmyadmin.net/
 --
 -- Host: database:3306
--- Generation Time: Feb 19, 2021 at 02:45 AM
+-- Generation Time: Feb 20, 2021 at 02:45 AM
 -- Server version: 8.0.23
 -- PHP Version: 7.4.15
 
@@ -102,11 +102,20 @@ CREATE TABLE `servers` (
 
 DROP TABLE IF EXISTS `settings`;
 CREATE TABLE `settings` (
+  `id` int NOT NULL,
   `Category` varchar(100) NOT NULL,
   `PropertyName` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `PropertyValue` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `Description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `settings`
+--
+
+INSERT INTO `settings` (`id`, `Category`, `PropertyName`, `PropertyValue`, `Description`) VALUES
+(1, 'General', 'Company Name', 'My Company', 'Personalize the site with your company name'),
+(2, 'General', 'Company Logo', '/images/logo-32x32.png', 'Path to your company logo image');
 
 --
 -- Indexes for dumped tables
@@ -166,7 +175,8 @@ ALTER TABLE `servers`
 -- Indexes for table `settings`
 --
 ALTER TABLE `settings`
-  ADD PRIMARY KEY (`Category`,`PropertyName`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `Category` (`Category`,`PropertyName`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -177,6 +187,12 @@ ALTER TABLE `settings`
 --
 ALTER TABLE `servers`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `settings`
+--
+ALTER TABLE `settings`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 

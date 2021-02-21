@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: database:3306
--- Generation Time: Feb 20, 2021 at 02:45 AM
+-- Generation Time: Feb 21, 2021 at 01:41 AM
 -- Server version: 8.0.23
 -- PHP Version: 7.4.15
 
@@ -108,7 +108,37 @@ CREATE TABLE `settings` (
 
 INSERT INTO `settings` (`id`, `Category`, `PropertyName`, `PropertyValue`, `Description`) VALUES
 (1, 'General', 'Company Name', 'My Company', 'Personalize the site with your company name'),
-(2, 'General', 'Company Logo', '/images/logo-32x32.png', 'Path to your company logo image');
+(2, 'General', 'Company Logo', '/images/logo-32x32.png', 'Path to your company logo image'),
+(3, 'Active Directory', 'Primary Domain Name', 'MyDomain', 'Usually this would be the name of your production Active Directory domain. If you have multiple production domains, this would be your primary one.'),
+(4, 'Application', 'FROM Email Address', 'MOAD Automation <moad@mycompany.com>', 'Emails sent by the system will use this address as the sender address.'),
+(5, 'Application', 'SMTP Server', 'mailrelay.mycompany.com', 'SMTP Relay server to be used by the system to send email messages.'),
+(6, 'Application', 'System Administrator eMail Address', 'admin1@mycompany.com', 'Email address of the system administrator that will receive error notifications.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `supporters`
+--
+
+DROP TABLE IF EXISTS `supporters`;
+CREATE TABLE `supporters` (
+  `id` int NOT NULL,
+  `UserID` varchar(50) NOT NULL,
+  `FirstName` varchar(50) DEFAULT NULL,
+  `LastName` varchar(50) DEFAULT NULL,
+  `DisplayName` varchar(200) DEFAULT NULL,
+  `Type` varchar(50) DEFAULT NULL,
+  `Title` varchar(100) DEFAULT NULL,
+  `email` varchar(200) DEFAULT NULL,
+  `Company` varchar(100) DEFAULT NULL,
+  `DirectPhone` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `MobilePhone` varchar(200) DEFAULT NULL,
+  `Address` varchar(250) DEFAULT NULL,
+  `City` varchar(100) DEFAULT NULL,
+  `State` varchar(100) DEFAULT NULL,
+  `Country` varchar(100) DEFAULT NULL,
+  `CreationDate` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Indexes for dumped tables
@@ -172,6 +202,15 @@ ALTER TABLE `settings`
   ADD UNIQUE KEY `Category` (`Category`,`PropertyName`);
 
 --
+-- Indexes for table `supporters`
+--
+ALTER TABLE `supporters`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `UserID` (`UserID`),
+  ADD KEY `LastName` (`LastName`),
+  ADD KEY `FirstName` (`FirstName`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -185,5 +224,11 @@ ALTER TABLE `servers`
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `supporters`
+--
+ALTER TABLE `supporters`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 COMMIT;

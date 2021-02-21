@@ -183,10 +183,13 @@ input, select, textarea {
 		padding: 10px;
 		font-size: 15px;
 		margin-bottom: 10px;
-
 	}
 
-
+	.form-group textarea {
+		padding: 10px;
+		font-size: 15px;
+		margin-bottom: 10px;
+	}
 
 
 

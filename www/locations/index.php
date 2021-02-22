@@ -51,7 +51,7 @@
 				</div>				
 				<p>
 					<ul>
-						<li>Add Location</li>
+					<li><a href="/locations/add">Add Location</a></li>
 					</ul>
 
 				</p>

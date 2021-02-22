@@ -10,7 +10,7 @@ CREATE USER 'moad'@'localhost' IDENTIFIED BY '';
 -- https://www.phpmyadmin.net/
 --
 -- Host: database:3306
--- Generation Time: Feb 21, 2021 at 01:41 AM
+-- Generation Time: Feb 22, 2021 at 01:52 AM
 -- Server version: 8.0.23
 -- PHP Version: 7.4.15
 
@@ -47,14 +47,17 @@ CREATE TABLE `applications` (
 
 DROP TABLE IF EXISTS `locations`;
 CREATE TABLE `locations` (
+  `id` int NOT NULL,
   `LOC_ID` varchar(20) NOT NULL,
   `Name` varchar(50) NOT NULL,
-  `Address` varchar(200) NOT NULL,
+  `Address` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `City` varchar(40) NOT NULL,
   `State` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `Country` varchar(100) NOT NULL,
   `Region` varchar(20) NOT NULL,
-  `TZ` varchar(20) DEFAULT NULL
+  `TZ` varchar(20) DEFAULT NULL,
+  `Status` varchar(10) DEFAULT NULL,
+  `CreationDate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -164,13 +167,15 @@ ALTER TABLE `applications`
 -- Indexes for table `locations`
 --
 ALTER TABLE `locations`
-  ADD PRIMARY KEY (`LOC_ID`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `Name` (`Name`),
   ADD KEY `Region` (`Region`),
   ADD KEY `Country` (`Country`),
   ADD KEY `State` (`State`),
   ADD KEY `City` (`City`),
-  ADD KEY `TZ` (`TZ`);
+  ADD KEY `TZ` (`TZ`),
+  ADD KEY `Status` (`Status`),
+  ADD KEY `LOC_ID` (`LOC_ID`);
 
 --
 -- Indexes for table `servers`
@@ -222,6 +227,12 @@ ALTER TABLE `supporters`
 --
 
 --
+-- AUTO_INCREMENT for table `locations`
+--
+ALTER TABLE `locations`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `servers`
 --
 ALTER TABLE `servers`
@@ -239,6 +250,7 @@ ALTER TABLE `settings`
 ALTER TABLE `supporters`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 COMMIT;
+
 
 
 

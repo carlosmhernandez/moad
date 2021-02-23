@@ -10,7 +10,7 @@ CREATE USER 'moad'@'localhost' IDENTIFIED BY '';
 -- https://www.phpmyadmin.net/
 --
 -- Host: database:3306
--- Generation Time: Feb 22, 2021 at 01:52 AM
+-- Generation Time: Feb 23, 2021 at 02:15 AM
 -- Server version: 8.0.23
 -- PHP Version: 7.4.15
 
@@ -35,8 +35,11 @@ CREATE TABLE `applications` (
   `APP_ID` varchar(20) NOT NULL,
   `Name` varchar(50) NOT NULL,
   `Description` varchar(200) DEFAULT NULL,
-  `Business_Owner` varchar(50) NOT NULL,
-  `IT_Owner` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
+  `Business_Owner` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `IT_Owner` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `IT_Custodian` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `CreationDate` datetime NOT NULL,
+  `LastUpdated` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -161,7 +164,8 @@ ALTER TABLE `applications`
   ADD PRIMARY KEY (`APP_ID`),
   ADD KEY `IT_Owner` (`IT_Owner`),
   ADD KEY `Business_Owner` (`Business_Owner`),
-  ADD KEY `Name` (`Name`);
+  ADD KEY `Name` (`Name`),
+  ADD KEY `IT_Custodian` (`IT_Custodian`);
 
 --
 -- Indexes for table `locations`

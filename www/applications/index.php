@@ -51,7 +51,7 @@
 				</div>				
 				<p>
 					<ul>
-						<li>Add Application</li>
+					<li><a href="/applications/add">Add Application</a></li>
 					</ul>
 
 				</p>

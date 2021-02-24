@@ -29,7 +29,7 @@
 			<article class="box post post-excerpt">
 				<header>
 					<h2>Applications</h2>
-					<p>Suported Applications</p>
+					<p>Supported Applications</p>
 				</header>
 				<div class="info">
 <?php

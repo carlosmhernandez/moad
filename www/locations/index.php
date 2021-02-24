@@ -29,7 +29,7 @@
 			<article class="box post post-excerpt">
 				<header>
 					<h2>Locations</h2>
-					<p>Suported Sites</p>
+					<p>Supported Sites</p>
 				</header>
 				<div class="info">
 <?php

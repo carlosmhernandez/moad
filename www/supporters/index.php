@@ -28,7 +28,7 @@
 	    <!-- Post -->
 			<article class="box post post-excerpt">
 				<header>
-					<h2>Suporters</h2>
+					<h2>Supporters</h2>
 					<p>Technical Support Teams</p>
 				</header>
 				<div class="info">

@@ -14,3 +14,8 @@
   <!-- FAVICONS ICON -->
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon-32x32.png" />
+
+  <!-- Select2 -->
+  <link href="/plugins/select2-4.0.13/css/select2.min.css" rel="stylesheet" />
+  <script src="/plugins/jquery-3.5.1/jquery-3.5.1.min.js"></script>
+  <script src="/plugins/select2-4.0.13/js/select2.min.js"></script>

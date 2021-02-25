@@ -5,4 +5,5 @@
 - PHP 8.0.23 - https://www.php.net/
 - PHPMyAdmin 5.0.4 - https://www.phpmyadmin.net/
 - Fontawesome - 5.15.2 - https://fontawesome.com/
+- jquery - jquery-3.5.1 - https://jquery.com/
 - Select2 - 4.0.13 - https://select2.org/

@@ -1,4 +1,9 @@
 <?php
+/*
+  Library based on David Adams PHP MySQL Library Class
+  https://codeshack.io/super-fast-php-mysql-database-class/
+*/
+
   class MOAD_db
   {
     protected $connection;
@@ -49,7 +54,7 @@
               $args_ref[] = &$arg;
             }
           }
-
+          print_r($args);
           array_unshift($args_ref, $types);
           call_user_func_array(array($this->query, 'bind_param'), $args_ref);
         }

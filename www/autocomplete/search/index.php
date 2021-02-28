@@ -13,20 +13,19 @@
 
   if (isset($_REQUEST['key']['term']))
   {
-    $key = trim(strtoupper($_REQUEST['key']['term']));
-
-    echo $key,"<P>";
-    $sql = "select * from (select cn as objid, displayname as objdisplayname from ad.users where cn like '%?%' limit 20) as s order by s.objdisplayname";
-    
+    $key = trim(strtoupper($_REQUEST['key']['term']));    
+    $sql = "select cn as objid, displayname as objdisplayname from ad.users where cn like '%" . $key . "%' order by objdisplayname limit 20";
     $query = $MOAD->query($sql);
-    $results = mysqli_num_rows($query,$key);
+    $results = $query->numRows();
     $matches = $matches + $results;
 
     if ($results > 0)
     {
+      $x=0;
       echo "{\"text\": \"Users\", \"children\": [\n";
-      for ($x=1; $row = mysqli_fetch_assoc($query); $x++)
+      foreach ($query->fetchAll() as $row)
       {
+        $x++;
         echo "{\"id\":\"",$row['objid'],"\",";
         echo "\"type\":\"USERID\",";
         echo "\"text\":";
@@ -40,17 +39,28 @@
       $previous++;
     }
 
-    $sql = "select name as objid, count(1) as totalservers, concat(description,' ', type) as objdisplayname from moad.servers where name like '%" . $key . "%' group by name order by name limit 20";
+    if ($matches == 0)
+    {
+      if ($previous > 0)
+      {
+        echo ",";
+        $previous = 0;
+      }
+    }
+
+    $sql = "select hostname as objid, count(1) as totalservers, concat(description,' ', server_type) as objdisplayname from moad.servers where hostname like '%" . $key . "%' group by hostname order by hostname limit 20";
+
     $query = $MOAD->query($sql);
-    $results = mysqli_num_rows($query);
+    $results = $query->numRows();
     $matches = $matches + $results;
 
     if ($results > 0)
     {
       echo "{\"text\": \"Servers\", \"children\": [\n";
-      
-      for ($x=1; $row = mysqli_fetch_assoc($query); $x++)
+      $x=0;
+      foreach ($query->fetchAll() as $row)
       {
+        $x++;
         echo "{";
         echo "\"text\":";
         echo "\"", $row['objid']," (", $row['objdisplayname'],")\",";
@@ -58,18 +68,12 @@
         echo "\"type\":\"SERVERNAME\"}";
         if ($x < $results) echo ",";
       }
+      echo "]}\n";
+      $previous++;
     }
   }
 
-  if ($matches == 0)
-  {
-    if ($previous > 0)
-    {
-      echo ",";
-      $previous = 0;
-    }
-  }
-
+ 
   echo "\n]\n,\n\"paginate\": {\n\"more\": false\n}\n";
   echo "}\n";
 ?>

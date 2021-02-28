@@ -1,6 +1,6 @@
 <?php
 /*
-  Library based on David Adams PHP MySQL Library Class
+  Library based on David Adams PHP MySQL Database Class
   https://codeshack.io/super-fast-php-mysql-database-class/
 */
 

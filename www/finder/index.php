@@ -1,5 +1,10 @@
 <?PHP
+  if (! defined('ROOT_PATH')) {
+    define('ROOT_PATH', $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR);
+  }
 
+  require_once ROOT_PATH . 'includes/common.inc.php';
+  
   if (isset($_REQUEST['query']))
   {
     $query = trim(urldecode($_REQUEST['query']));
@@ -31,19 +36,19 @@
         exit();
       }
 
-      $ishost = $MOAD->result("select count(1) from moad.servers.where name like '\%$query%'");
+      $ishost = $MOAD->query("select hostname from moad.servers where hostname like '%" . $query . "%'")->numRows();
       if ($ishost > 0)
       {
         if ($ishost == 1)
         {
-          $id = $MOAD->result("select serverid from moad.servers.where name like '%$query%'");
-          echo "<META http-equiv=\"refresh\" content=\"0; URL=/servers/inventory/systemsummary.php?id=$id\">";
+          $row = $MOAD->query("select id from moad.servers where hostname like '%" . $query . "%'")->fetchAll();
+          echo "<META http-equiv=\"refresh\" content=\"0; URL=/server/?id=" , $row[0]['id'] , "\">";
         }
         else
-          echo "<META http-equiv=\"refresh\" content=\"0; URL=/servers/inventory/systemsummary.php?host=$query\">";
+          echo "<META http-equiv=\"refresh\" content=\"0; URL=/server/?host=$query\">";
         exit;
       }
-      
+
       break;
 
     case "USERID" :

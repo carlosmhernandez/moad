@@ -16,7 +16,7 @@
 
   if (isset($_REQUEST['objtype']))
   {
-    if (($_REQUEST['objtype']="undefined") or (trim($_REQUEST['objtype'])==""))
+    if (($_REQUEST['objtype']=="undefined") or (trim($_REQUEST['objtype'])==""))
       $objtype = "SMART";
     else
       $objtype = $_REQUEST['objtype'];
@@ -42,10 +42,10 @@
         if ($ishost == 1)
         {
           $row = $MOAD->query("select id from moad.servers where hostname like '%" . $query . "%'")->fetchAll();
-          echo "<META http-equiv=\"refresh\" content=\"0; URL=/server/?id=" , $row[0]['id'] , "\">";
+          echo "<META http-equiv=\"refresh\" content=\"0; URL=/servers/?id=" , $row[0]['id'] , "\">";
         }
         else
-          echo "<META http-equiv=\"refresh\" content=\"0; URL=/server/?host=$query\">";
+          echo "<META http-equiv=\"refresh\" content=\"0; URL=/servers/?host=$query\">";
         exit;
       }
 
@@ -53,16 +53,16 @@
 
     case "USERID" :
       $keys = preg_split("/ /",$query);
-
-      if (count($key) > 1)
+      
+      if (count($keys) > 1)
       {
         $key = base64_encode($query);
-        echo "<META http-equiv=\"refresh\" content=\"0; URL=/people/?key=$key\">";
+        echo "<META http-equiv=\"refresh\" content=\"0; URL=/users/?key=$key\">";
         exit;
       }
       else
       {
-        echo "<META http-equiv=\"refresh\" content=\"0; URL=/access/?id=$query\">";
+        echo "<META http-equiv=\"refresh\" content=\"0; URL=/users/?id=$query\">";
       }
   }
 ?>

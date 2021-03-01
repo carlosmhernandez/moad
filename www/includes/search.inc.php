@@ -2,8 +2,8 @@
     // Search 
     echo "<form method=\"get\" name=\"search\" id=\"searchform\" action=\"/finder/\">";
     echo "<input name=objtype id=objtype type=hidden>";
-    echo "<span style=\"padding:5em;width:100%;text-shadow:none\">";
-    echo "<select class=\"query\" name=\"query\" id=\"query\" onChange=\"this.form.submit()\">";
+    echo "<span style=\"padding:10px;width:100%;text-shadow:none\">";
+    echo "<select class=\"query\" name=\"query\" id=\"query\" >";
     echo "</select>";
     echo "</span>";
     echo "</form>";
@@ -11,7 +11,7 @@
 <SCRIPT>
   $('#query').select2({
     placeholder: "Search...",
-    minimumInputLength: 4,
+    minimumInputLength: 3,
     multiple: false,
     createSearchChoice:function(term, data) {
       if ($(data).filter(function() {
@@ -33,10 +33,10 @@
         return { results: data };
       }
     }
-  }).on("select2-selecting", function(e) {
+  }).on("select2:select", e=> {
     var elem = document.getElementById("objtype");
-    document.search.query.value = e.object.id;
-    document.search.objtype.value = e.object.type;
+    document.search.query.value = e.params.data.id;
+    document.search.objtype.value = e.params.data.type;
     document.search.submit();
   });
 </SCRIPT>

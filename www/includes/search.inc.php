@@ -1,6 +1,6 @@
 <?php
     // Search 
-    echo "<form method=\"get\" name=\"search\" id=\"searchform\" action=\"/finder/\">";
+    echo "<form method=\"POST\" name=\"search\" id=\"searchform\" action=\"/finder/\">";
     echo "<input name=objtype id=objtype type=hidden>";
     echo "<span style=\"padding:10px;width:100%;text-shadow:none\">";
     echo "<select class=\"query\" name=\"query\" id=\"query\" >";

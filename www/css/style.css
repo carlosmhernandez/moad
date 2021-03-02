@@ -193,7 +193,10 @@ input, select, textarea {
 
 
 
-
+	.error-group h2 {
+		text-decoration: none;
+		color: red;
+	}
 
 
 

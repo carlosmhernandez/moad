@@ -50,6 +50,11 @@
       }
 
       break;
+    
+    case "SERVERNAME" :
+      echo "<META http-equiv=\"refresh\" content=\"0; URL=/servers/info/?host=$query\">";
+
+      break;
 
     case "USERID" :
       $keys = preg_split("/ /",$query);
@@ -57,12 +62,15 @@
       if (count($keys) > 1)
       {
         $key = base64_encode($query);
-        echo "<META http-equiv=\"refresh\" content=\"0; URL=/users/?key=$key\">";
+        echo "<META http-equiv=\"refresh\" content=\"0; URL=/users/info/?key=$key\">";
         exit;
       }
       else
       {
-        echo "<META http-equiv=\"refresh\" content=\"0; URL=/users/?id=$query\">";
+        echo "<META http-equiv=\"refresh\" content=\"0; URL=/users/info?id=$query\">";
       }
+
+      break;
+
   }
 ?>

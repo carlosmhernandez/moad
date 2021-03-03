@@ -57,18 +57,7 @@
       break;
 
     case "USERID" :
-      $keys = preg_split("/ /",$query);
-      
-      if (count($keys) > 1)
-      {
-        $key = base64_encode($query);
-        echo "<META http-equiv=\"refresh\" content=\"0; URL=/users/info/?key=$key\">";
-        exit;
-      }
-      else
-      {
-        echo "<META http-equiv=\"refresh\" content=\"0; URL=/users/info?id=$query\">";
-      }
+      echo "<META http-equiv=\"refresh\" content=\"0; URL=/users/info?userid=$query\">";
 
       break;
 

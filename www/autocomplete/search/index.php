@@ -13,63 +13,100 @@
 
   if (isset($_REQUEST['key']['term']))
   {
-    $key = trim(strtoupper($_REQUEST['key']['term']));    
-    $sql = "select cn as objid, displayname as objdisplayname from ad.users where cn like '%" . $key . "%' order by objdisplayname limit 20";
-    $query = $MOAD->query($sql);
-    $results = $query->numRows();
-    $matches = $matches + $results;
-
-    if ($results > 0)
+    if (preg_match('/^[a-zA-Z]+[a-zA-Z0-9_-]+$/', $_REQUEST['key']['term']))
     {
-      $x=0;
-      echo "{\"text\": \"Users\", \"children\": [\n";
-      foreach ($query->fetchAll() as $row)
+      $key = trim(strtoupper($_REQUEST['key']['term'])); 
+      $sql = "select cn as objid, displayname as objdisplayname from ad.users where cn like '%" . $key . "%' order by objdisplayname limit 20";
+      $query = $MOAD->query($sql);
+      $results = $query->numRows();
+      $matches = $matches + $results;
+
+      if ($results > 0)
       {
-        $x++;
-        echo "{\"id\":\"",$row['objid'],"\",";
-        echo "\"type\":\"USERID\",";
-        echo "\"text\":";
-        echo "\"", $row['objid']," (", $row['objdisplayname'],")\"";
+        $x=0;
+        echo "{\"text\": \"Users\", \"children\": [\n";
+        foreach ($query->fetchAll() as $row)
+        {
+          $x++;
+          echo "{\"id\":\"",$row['objid'],"\",";
+          echo "\"type\":\"USERID\",";
+          echo "\"text\":";
+          echo "\"", $row['objid']," (", $row['objdisplayname'],")\"";
+          echo "}";
 
-        echo "}";
-        if ($x < $results) echo ",";
-        echo "\n";
+          if ($x < $results) echo ",";
+          echo "\n";
+        }
+        echo "]}\n";
+        $previous++;
       }
-      echo "]}\n";
-      $previous++;
-    }
 
-    if ($matches == 0)
-    {
-      if ($previous > 0)
+      if ($matches > 0)
       {
-        echo ",";
-        $previous = 0;
+        if ($previous > 0)
+        {
+          echo ",";
+          $previous = 0;
+        }
       }
-    }
 
-    $sql = "select hostname as objid, count(1) as totalservers, concat(description,' ', server_type) as objdisplayname from moad.servers where hostname like '%" . $key . "%' group by hostname order by hostname limit 20";
+      $sql = "select hostname as objid, count(1) as totalservers, concat(description,' ', server_type) as objdisplayname from moad.servers where hostname like '%" . $key . "%' group by hostname order by hostname limit 20";
+      $query = $MOAD->query($sql);
+      $results = $query->numRows();
+      $matches = $matches + $results;
 
-    $query = $MOAD->query($sql);
-    $results = $query->numRows();
-    $matches = $matches + $results;
-
-    if ($results > 0)
-    {
-      echo "{\"text\": \"Servers\", \"children\": [\n";
-      $x=0;
-      foreach ($query->fetchAll() as $row)
+      if ($results > 0)
       {
-        $x++;
-        echo "{";
-        echo "\"text\":";
-        echo "\"", $row['objid']," (", $row['objdisplayname'],")\",";
-        echo "\"id\":\"", $row['objid'], "\",";
-        echo "\"type\":\"SERVERNAME\"}";
-        if ($x < $results) echo ",";
+        echo "{\"text\": \"Servers\", \"children\": [\n";
+        $x=0;
+        foreach ($query->fetchAll() as $row)
+        {
+          $x++;
+          echo "{";
+          echo "\"text\":";
+          echo "\"", $row['objid']," (", $row['objdisplayname'],")\",";
+          echo "\"id\":\"", $row['objid'], "\",";
+          echo "\"type\":\"SERVERNAME\"}";
+          if ($x < $results) echo ",";
+        }
+        echo "]}\n";
+        $previous++;
       }
-      echo "]}\n";
-      $previous++;
+
+      if ($matches > 0)
+      {
+        
+        if ($previous > 0)
+        {
+          echo ",";
+          $previous = 0;
+        }
+      }
+
+      
+      $sql = "select userid as objid, displayname as objdisplayname from moad.supporters where userid like '%" . $key . "%' order by userid limit 20";
+      $query = $MOAD->query($sql);
+      $results = $query->numRows();
+      $matches = $matches + $results;
+
+      if ($results > 0)
+      {
+        echo "{\"text\": \"Supporter\", \"children\": [\n";
+        $x=0;
+        foreach ($query->fetchAll() as $row)
+        {
+          $x++;
+          echo "{\"id\":\"",$row['objid'],"\",";
+          echo "\"type\":\"SUPPORTER\",";
+          echo "\"text\":";
+          echo "\"", $row['objid']," (", $row['objdisplayname'],")\"";
+          echo "}";
+
+          if ($x < $results) echo ",";
+        }
+        echo "]}\n";
+        $previous++;
+      }
     }
   }
 

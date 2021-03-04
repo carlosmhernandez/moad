@@ -61,5 +61,9 @@
 
       break;
 
+    case "SUPPORTER" :
+        echo "<META http-equiv=\"refresh\" content=\"0; URL=/supporters/info?userid=$query\">";
+  
+        break;
   }
 ?>

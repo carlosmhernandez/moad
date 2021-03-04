@@ -76,9 +76,9 @@
       if ($matches > 0)
       {
         
-        if ($previous > 0)
+        if ($previous > 1)
         {
-          echo ",";
+          echo "---,";
           $previous = 0;
         }
       }

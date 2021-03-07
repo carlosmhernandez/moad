@@ -13,7 +13,7 @@
 
   if (isset($_REQUEST['key']['term']))
   {
-    if (preg_match('/^[a-zA-Z]+[a-zA-Z0-9_-]+$/', $_REQUEST['key']['term']))
+    if (preg_match('/^[a-zA-Z]+[a-zA-Z0-9 _-]+$/', $_REQUEST['key']['term']))
     {
       $key = trim(strtoupper($_REQUEST['key']['term'])); 
       $sql = "select cn as objid, displayname as objdisplayname from ad.users where cn like '%" . $key . "%' order by objdisplayname limit 20";
@@ -107,6 +107,41 @@
         echo "]}\n";
         $previous++;
       }
+
+      if ($matches > 0)
+      {
+        
+        if ($previous > 1)
+        {
+          echo "---,";
+          $previous = 0;
+        }
+      }
+      
+      
+      $sql = "select app_id as objid, name as objdisplayname from moad.applications where name like '%" . $key . "%' order by name limit 20";
+      $query = $MOAD->query($sql);
+      $results = $query->numRows();
+      $matches = $matches + $results;
+
+      if ($results > 0)
+      {
+        echo "{\"text\": \"Application\", \"children\": [\n";
+        $x=0;
+        foreach ($query->fetchAll() as $row)
+        {
+          $x++;
+          echo "{\"id\":\"",$row['objid'],"\",";
+          echo "\"type\":\"APPLICATION\",";
+          echo "\"text\":";
+          echo "\"", $row['objid']," (", $row['objdisplayname'],")\"";
+          echo "}";
+
+          if ($x < $results) echo ",";
+        }
+        echo "]}\n";
+        $previous++;
+      }      
     }
   }
 

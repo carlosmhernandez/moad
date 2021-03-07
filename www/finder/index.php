@@ -65,5 +65,10 @@
         echo "<META http-equiv=\"refresh\" content=\"0; URL=/supporters/info?userid=$query\">";
   
         break;
+
+    case "APPLICATION" :
+      echo "<META http-equiv=\"refresh\" content=\"0; URL=/applications/info?appid=$query\">";
+
+      break;
   }
 ?>

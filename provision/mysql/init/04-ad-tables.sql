@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: database:3306
--- Generation Time: Feb 20, 2021 at 02:25 AM
+-- Generation Time: Mar 08, 2021 at 12:29 AM
 -- Server version: 8.0.23
 -- PHP Version: 7.4.15
 
@@ -86,13 +86,25 @@ CREATE TABLE `users` (
   `GivenName` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `Surname` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `DisplayName` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `Title` varchar(100) DEFAULT NULL,
   `email` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `SID` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `Domain` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `UserPrincipalName` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `City` varchar(100) DEFAULT NULL,
+  `TelephoneNumber` varchar(30) DEFAULT NULL,
   `UAC` int DEFAULT NULL,
+  `HomeDirectory` varchar(200) DEFAULT NULL,
+  `LastLogonDate` datetime DEFAULT NULL,
+  `LastBadPasswordAttempt` datetime DEFAULT NULL,
+  `LockedOut` varchar(5) DEFAULT NULL,
+  `PasswordExpired` varchar(5) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `PasswordLastSet` datetime DEFAULT NULL,
+  `PasswordNetverExpires` varchar(5) DEFAULT NULL,
+  `PasswordNotRequired` varchar(5) DEFAULT NULL,
   `GroupMemberships` int DEFAULT NULL,
-  `WhenCreated` datetime DEFAULT NULL
+  `WhenCreated` datetime DEFAULT NULL,
+  `WhenChanged` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
